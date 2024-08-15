@@ -1,0 +1,164 @@
+{
+  "name": "nx-base",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/nx-base/src",
+  "projectType": "application",
+  "targets": {
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "options": {
+        "engine": "docker",
+        "push": true,
+        "metadata": {
+          "flavor": [],
+          "labels": [],
+          "images": [],
+          "no-cache": true,
+          "tags": []
+        }
+      },
+      "configurations": {
+        "lts-local": {
+          "file": "apps/nx-base/Dockerfile.lts",
+          "push": false,
+          "metadata": {
+            "images": [
+              "nx-base"
+            ],
+            "labels": [
+              "org.opencontainers.image.title=Nx-Base",
+              "org.opencontainers.image.description=Nx-Base Image",
+              "org.opencontainers.image.vendor=PRB Services LLC"
+            ],
+            "tags": [
+              "type=sha,prefix=lts-"
+            ]
+          }
+        },
+        "lts-branch": {
+          "file": "apps/nx-base/Dockerfile.lts",
+          "metadata": {
+            "flavor": [
+              "latest=false"
+            ],
+            "images": [
+              "prbservicesllc/nx-base"
+            ],
+            "labels": [
+              "org.opencontainers.image.title=Nx-Base",
+              "org.opencontainers.image.description=Nx-Base Image",
+              "org.opencontainers.image.vendor=PRB Services LLC"
+            ],
+            "tags": [
+              "type=ref,event=branch,suffix=-dev"
+            ]
+          }
+        },
+        "lts-dev": {
+          "file": "apps/nx-base/Dockerfile.lts",
+          "metadata": {
+            "flavor": [
+              "latest=false"
+            ],
+            "images": [
+              "prbservicesllc/nx-base"
+            ],
+            "labels": [
+              "org.opencontainers.image.title=Nx-Base",
+              "org.opencontainers.image.description=Nx-Base Image",
+              "org.opencontainers.image.vendor=PRB Services LLC"
+            ],
+            "tags": [
+              "type=ref,event=branch,prefix=lts-",
+              "type=ref,event=tag,prefix=lts-",
+              "type=semver,pattern={{version}}, prefix=lts-",
+              "type=semver,pattern={{version}}, value=dev, prefix=lts-",
+              "type=raw, value=lts-dev"
+            ]
+          }
+        },
+        "current-local": {
+          "file": "apps/nx-base/Dockerfile.current",
+          "push": false,
+          "metadata": {
+            "images": [
+              "nx-base"
+            ],
+            "labels": [
+              "org.opencontainers.image.title=Nx-Base",
+              "org.opencontainers.image.description=Nx-Base Image",
+              "org.opencontainers.image.vendor=PRB Services LLC"
+            ],
+            "tags": [
+              "type=sha,prefix=current-local-"
+            ]
+          }
+        },
+        "current-branch": {
+          "file": "apps/nx-base/Dockerfile.current",
+          "metadata": {
+            "flavor": [
+              "latest=false"
+            ],
+            "images": [
+              "prbservicesllc/nx-base"
+            ],
+            "labels": [
+              "org.opencontainers.image.title=Nx-Base",
+              "org.opencontainers.image.description=Nx-Base Image",
+              "org.opencontainers.image.vendor=PRB Services LLC"
+            ],
+            "tags": [
+              "type=ref,event=branch,suffix=-alpha"
+            ]
+          }
+        },
+        "current-dev": {
+          "file": "apps/nx-base/Dockerfile.current",
+          "metadata": {
+            "flavor": [
+              "latest=false"
+            ],
+            "images": [
+              "prbservicesllc/nx-base"
+            ],
+            "labels": [
+              "org.opencontainers.image.title=Nx-Base",
+              "org.opencontainers.image.description=Nx-Base Image",
+              "org.opencontainers.image.vendor=PRB Services LLC"
+            ],
+            "tags": [
+              "type=ref,event=branch,suffix=-current",
+              "type=ref,event=tag,suffix=-current",
+              "type=semver,pattern={{version}}, suffix=-current",
+              "type=semver,pattern={{version}}, value=dev, suffix=-current",
+              "type=raw, value=dev-current"
+            ]
+          }
+        },
+        "current-trunk": {
+          "file": "apps/nx-base/Dockerfile.current",
+          "metadata": {
+            "flavor": [
+              "latest=true"
+            ],
+            "images": [
+              "prbservicesllc/nx-base"
+            ],
+            "labels": [
+              "org.opencontainers.image.title=Nx-Base",
+              "org.opencontainers.image.description=Nx-Base Image",
+              "org.opencontainers.image.vendor=PRB Services LLC"
+            ],
+            "tags": [
+              "type=ref,event=tag,suffix=-current",
+              "type=semver,pattern={{version}}, suffix=-current",
+              "type=raw, value=current"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}

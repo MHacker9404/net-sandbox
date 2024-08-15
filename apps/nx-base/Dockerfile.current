@@ -1,0 +1,18 @@
+# https://medium.com/swlh/nx-nestjs-react-docker-deploys-928a55fc19fd
+FROM node:current-bookworm-slim as builder
+ARG NODE_ENV
+ARG BUILD_FLAG
+
+WORKDIR /repo
+
+RUN apt-get update && apt-get install -y wget \
+  && wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \  
+  && dpkg -i packages-microsoft-prod.deb \
+  && rm packages-microsoft-prod.deb 
+RUN apt-get update \
+  && apt-get install -y dotnet-sdk-8.0 \
+  && apt-get autoremove
+
+COPY ../../ .
+RUN yarn install
+RUN npx update-browserslist-db@latest
