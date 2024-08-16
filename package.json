@@ -20,7 +20,7 @@
     "@nrwl/nx-plugin": "19.6.0",
     "@nrwl/workspace": "19.6.0",
     "@nx-dotnet/core": "^2.4.3",
-    "@nx-extend/terraform": "6.0.5",
+    "@nx-extend/terraform": "7.0.0",
     "@nx-tools/container-metadata": "^6.0.1",
     "@nx-tools/nx-container": "^6.0.1",
     "@nx/devkit": "19.6.0",
