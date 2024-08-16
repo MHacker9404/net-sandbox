@@ -1,0 +1,9 @@
+{
+  "name": "BlazingPizzaSite",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/BlazingPizzaSite",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project BlazingPizzaSite --web",
+  "targets": {}
+}
